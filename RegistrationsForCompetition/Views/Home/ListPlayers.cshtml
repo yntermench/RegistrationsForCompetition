@@ -1,0 +1,56 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Регистрация</title>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
+</head>
+<body>
+    <div class="card-body">
+        <table class="table table-sm table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Логин</th>
+                    <th>Почта</th>
+                    <th>Пароль</th>
+                    <th>Уровень</th>
+                    <th>Счётчик pp</th>
+                    <th>Мультиплеер</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (RegistrationsForCompetition.Models.Player r in Model)
+                {
+                <tr>
+                    <td>@r.Login</td>
+                    <td>@r.Email</td>
+                    <td>Недоступен</td>
+                    <td>@r.Level</td>
+                    @if (r.CountPP != null)
+                    {
+                        <td>@r.CountPP</td>
+                    }
+                    else
+                    {
+                        <td>Не указано</td>
+                    }
+                    @if (r.Multiplayer != null)
+                    {
+                        <td>Да, играл</td>
+                    }
+                    else
+                    {
+                        <td>Нет, не играл</td>
+                    }
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
